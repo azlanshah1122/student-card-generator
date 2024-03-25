@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    
+}
+#container{
+height: 100vh;
+width: 100%;
+background-color: rgb(78, 25, 25);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 10px;
+}
+#div1{
+    /* border: 2px solid green; */
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: #e3b4b4;
+    min-height: 50vh;
+    border-radius: 8px;
+}
+#div1 input{
+    margin: 20px;
+    height: 30px;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    padding:10px;
+    text-transform: capitalize;
+
+}
+#div1 label{
+    margin-left: 20px;
+}
+#div1 h1{
+    text-align: center;
+    margin: 20px 0px 30px;
+    text-transform: capitalize;
+}
+.btn{
+   /* background-color: rgb(78, 25, 25) ; */
+   text-align: center;
+}
+button{
+    background-color: rgb(78, 25, 25);
+    width: 90px;
+    height: 35px;
+    outline: none;
+    border: none;
+    color: beige;
+    font-size: 20px;
+    border-radius: 9px;
+    margin: 10px;
+}
+ #upload{
+    width: 130px;
+}
+     /* ///div 2  ///  */ 
+#div2{
+    border-radius: 8px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   display: none;
+    flex-direction: column;
+background-image: url(65a128ad63d9110ebd2629595460a75c.jpg) ;
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+min-height: 60vh;
+}
+/* #content{
+    border: 2px solid green;
+    height: 90%;
+    width: 90%;
+} */
+img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: black;
+    margin-bottom: 50px;
+   border-bottom: 1px solid green;
+  margin-top: 15px;
+}
+#div2 p{
+    margin-top: 20px;
+    font-size: 30px;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+#div2 h2{
+    text-transform: capitalize;
+ font-size: 25px;
+ padding-bottom: 20px;
+ padding-top: 20px;
+
+   
+}
+    </style>
+    <div id="container">
+    <div id="div1">
+        <h1>Enter Card Details</h1>
+    <label for="name">Name</label>
+    <input type="text" id="card-name">
+    <label for="sunject">subject</label>
+    <input type="text" id="subject">
+    <label for="rollno">RollNo</label>
+    <input type="text" id="roll-no">
+    <label for="upload">Upload Photo</label>
+    <input type="file" accept="image/*" onchange="loadimage(event)" id="upload">
+    <div class="btn">
+        <button id="btn">Preview</button>
+    </div>
+</div>
+<div id="div2">
+    <!-- <div id="content"> -->
+        <h2>Student Card</h2>
+        <img id="img" src="" alt="img">
+    <p id="name-card"></p>
+    <p id="subject-2"></p>
+    <p id="no-roll"></p>
+</div>
+<!-- </div> -->
+
+</div>
+<script src="script.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    let btn = document.getElementById("btn");
+
+    btn.addEventListener("click", () => {
+        let cardName = document.getElementById("card-name").value;
+        let subject = document.getElementById("subject").value;
+        let rollNO = document.getElementById("roll-no").value;
+
+        let nameCard = document.getElementById("name-card");
+        let subject2 = document.getElementById("subject-2");
+        let noRoll = document.getElementById("no-roll");
+
+        let div1= document.getElementById("div1")
+        let div2 = document.getElementById("div2")
+        div1.remove();
+div2.style.display = `block`
+div2.style.display = `flex`
+div2.style.justifyContent = `center`
+div2.style.alignItems = `center`
+        nameCard.innerText = cardName;
+        subject2.innerText = subject;
+        noRoll.innerText = rollNO;
+
+        console.log("Clicked");
+    });
+});
+function loadimage(event){
+    const image =document.getElementById("img");
+    image.src = URL.createObjectURL(event.target.files[0]);
+}
+</script>
+</body>
+</html>
